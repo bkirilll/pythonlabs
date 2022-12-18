@@ -1,2 +1,2 @@
-from .figures import square_perimeter
-square_perimeter()
+from .figures import triangle_perimeter
+triangle_perimeter()

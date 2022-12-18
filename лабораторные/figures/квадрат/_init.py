@@ -1,1 +1,1 @@
-from .code import square_area, square_perimeter
+from .code_1 import square_area, square_perimeter
