@@ -5,6 +5,6 @@ def triangle_perimeter(a = default_a, b = default_b, c = default_c):
     P_tr = a + b + c 
     return P_tr
 def triangle_area(a = default_a, b = default_b, c = default_c):
-    p = (a + b + c)/2   #Полупериметр треугольника
-    S_tr = (p*(p - a)*(p - b)*(p - c))**0,5     #Формула Герона
-    return S_tr
+    p = (a + b + c)/2   
+    S_tr = (p*(p - a)*(p - b)*(p - c))**0,5 
+    return S_tr 

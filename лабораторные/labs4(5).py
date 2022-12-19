@@ -1,2 +1,2 @@
-from .figures import triangle_perimeter
-triangle_perimeter()
+from .figures import triangle_area
+triangle_area()

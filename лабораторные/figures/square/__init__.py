@@ -1,0 +1,1 @@
+from .code_2 import square_area, square_perimeter

@@ -1,1 +1,0 @@
-from .code_1 import triangle_area, triangle_perimeter
