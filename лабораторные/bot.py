@@ -1,6 +1,9 @@
 import telebot
 import requests
+import shutil
 bot = telebot.TeleBot('5833844958:AAHd_AH1y73558v5MUO8QzYQwcbcly2T4DA')
+url = "https://api.deepai.org/api/colorizer"
+headers = {'api-key': 'quickstart-QUdJIGlzIGNvbWluZy4uLi4K'}
 
 @bot.message_handler(commands=['start'])
 def start(message):
@@ -10,13 +13,18 @@ def start(message):
 
 @bot.message_handler(content_types=['photo'])
 def get_user_photo(message):
-    r = requests.post(
-    "https://api.deepai.org/api/colorizer",
-    files={
-        'image': open('/path/to/your/file.jpg', 'rb'),
-    },
-    headers={'api-key': 'quickstart-QUdJIGlzIGNvbWluZy4uLi4K'})
-    print(r.json())
+    data={
+            'photo': message.text,
+        }
+    
+    response_url = requests.post(url, data, headers=headers).json()["output_url"]
+    img = requests.get(response_url,  stream=True)
+
+    with open('img.png', 'wb') as out_file:
+        shutil.copyfileobj(img.raw, out_file)
+        
+    photo = open('img.png', 'rb')
+    bot.send_photo(message.chat.id, photo)
 
 
 bot.polling(none_stop=True)
